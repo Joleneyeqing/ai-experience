@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en" lang-mode="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yeqing Li | Portfolio</title>
+  <style>
+    :root {
+      --bg: #f6f2eb;
+      --paper: rgba(255, 255, 255, 0.78);
+      --paper-strong: rgba(255, 255, 255, 0.92);
+      --text: #1f1b18;
+      --muted: #6f665e;
+      --line: rgba(64, 52, 42, 0.12);
+      --accent: #9f6c45;
+      --accent-soft: rgba(159, 108, 69, 0.12);
+      --accent-strong: #6f4a2f;
+      --shadow: 0 20px 60px rgba(61, 43, 25, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(191, 154, 121, 0.18), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(134, 94, 61, 0.10), transparent 22%),
+        linear-gradient(180deg, #f8f4ee 0%, #f2ede6 100%);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 72px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 14px;
+      z-index: 50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 250, 244, 0.72);
+      border: 1px solid rgba(123, 98, 74, 0.12);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #8d5f3a 0%, #d8b492 100%);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      box-shadow: 0 12px 25px rgba(118, 77, 41, 0.22);
+      flex-shrink: 0;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy .name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-copy .sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      transition: 0.25s ease;
+    }
+
+    .nav a.active,
+    .nav a:hover {
+      background: rgba(108, 79, 53, 0.08);
+      color: var(--text);
+    }
+
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px;
+      border-radius: 999px;
+      background: rgba(117, 90, 65, 0.08);
+      border: 1px solid rgba(117, 90, 65, 0.08);
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 7px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .lang-btn.active {
+      background: #ffffff;
+      color: var(--text);
+      box-shadow: 0 8px 20px rgba(95, 71, 48, 0.10);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-top: 8px;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-main {
+      padding: 42px 38px;
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-main::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 82% 14%, rgba(171, 126, 87, 0.16), transparent 24%),
+        linear-gradient(135deg, rgba(255,255,255,0.22), transparent 55%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(111, 86, 61, 0.1);
+      font-size: 0.84rem;
+      color: var(--accent-strong);
+      letter-spacing: 0.01em;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: clamp(1.9rem, 4.4vw, 3.7rem);
+      line-height: 1.04;
+      margin: 0 0 14px;
+      letter-spacing: -0.03em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .lead {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 92%;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(111, 86, 61, 0.10);
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .hero-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      font-size: 0.92rem;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-contact a:hover {
+      color: var(--accent-strong);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .highlight-card {
+      padding: 26px;
+    }
+
+    .highlight-card h3 {
+      margin: 0 0 14px;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .highlight-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .highlight-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.62);
+      border: 1px solid rgba(111, 86, 61, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .highlight-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(86, 59, 37, 0.10);
+    }
+
+    .highlight-item .title {
+      font-size: 0.94rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .highlight-item p {
+      margin: 0;
+      font-size: 0.89rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    section {
+      margin-top: 26px;
+      scroll-margin-top: 110px;
+    }
+
+    .section-card {
+      padding: 34px 32px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.55rem, 2vw, 2rem);
+      letter-spacing: -0.03em;
+      font-family: "Georgia", "Times New Roman", serif;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .capability-card {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.62);
+      border: 1px solid rgba(111, 86, 61, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .capability-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(111, 86, 61, 0.16);
+      box-shadow: 0 18px 35px rgba(85, 60, 39, 0.11);
+    }
+
+    .capability-card .cap-no {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .capability-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.06rem;
+    }
+
+    .capability-card p {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .timeline-wrap {
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .timeline-tabs {
+      display: grid;
+      gap: 12px;
+      position: sticky;
+      top: 110px;
+    }
+
+    .timeline-tab {
+      text-align: left;
+      width: 100%;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(111, 86, 61, 0.10);
+      background: rgba(255,255,255,0.58);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .timeline-tab:hover,
+    .timeline-tab.active {
+      transform: translateX(4px);
+      background: rgba(255,255,255,0.9);
+      border-color: rgba(111, 86, 61, 0.18);
+      box-shadow: 0 16px 30px rgba(90, 62, 36, 0.12);
+    }
+
+    .timeline-tab .role {
+      font-weight: 700;
+      font-size: 0.96rem;
+      margin-bottom: 6px;
+    }
+
+    .timeline-tab .meta {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .timeline-card {
+      display: none;
+      padding: 28px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(111, 86, 61, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+    }
+
+    .timeline-card.active {
+      display: block;
+      animation: fadeUp 0.5s ease;
+    }
+
+    .timeline-card h3 {
+      margin: 0 0 6px;
+      font-size: 1.18rem;
+    }
+
+    .timeline-card .card-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+      line-height: 1.7;
+    }
+
+    .impact-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .impact-item {
+      display: grid;
+      grid-template-columns: 14px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px 0;
+      border-top: 1px solid rgba(111, 86, 61, 0.08);
+    }
+
+    .impact-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .impact-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-top: 8px;
+      background: linear-gradient(135deg, #9f6c45, #d7b08d);
+      box-shadow: 0 0 0 5px rgba(159,108,69,0.10);
+    }
+
+    .impact-item p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .skill-layout {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+    }
+
+    .skill-cloud,
+    .skill-detail {
+      padding: 24px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.62);
+      border: 1px solid rgba(111, 86, 61, 0.08);
+    }
+
+    .skill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-content: flex-start;
+      min-height: 260px;
+    }
+
+    .skill-pill {
+      border: 1px solid rgba(111, 86, 61, 0.10);
+      background: rgba(255,255,255,0.88);
+      border-radius: 999px;
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.22s ease;
+      color: var(--text);
+    }
+
+    .skill-pill:hover,
+    .skill-pill.active {
+      transform: translateY(-3px);
+      border-color: rgba(111, 86, 61, 0.18);
+      box-shadow: 0 14px 24px rgba(88, 61, 39, 0.12);
+      background: #fff;
+    }
+
+    .skill-detail .mini-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .skill-detail h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+    }
+
+    .skill-detail p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 0.95rem;
+    }
+
+    .edu-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .edu-card {
+      padding: 20px 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.62);
+      border: 1px solid rgba(111, 86, 61, 0.08);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .edu-card h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .edu-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 0.92rem;
+    }
+
+    .edu-date {
+      color: var(--accent-strong);
+      font-size: 0.85rem;
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .footer-card {
+      padding: 28px 30px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .footer-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 720px;
+    }
+
+    .footer-action {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #8d5f3a 0%, #b8875c 100%);
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 14px 26px rgba(112, 75, 45, 0.18);
+      white-space: nowrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    [data-lang],
+    [data-lang-block],
+    [data-lang-flex] {
+      display: none !important;
+    }
+
+    html[lang-mode="en"] [data-lang="en"] {
+      display: inline !important;
+    }
+
+    html[lang-mode="zh"] [data-lang="zh"] {
+      display: inline !important;
+    }
+
+    html[lang-mode="en"] [data-lang-block="en"] {
+      display: block !important;
+    }
+
+    html[lang-mode="zh"] [data-lang-block="zh"] {
+      display: block !important;
+    }
+
+    html[lang-mode="en"] [data-lang-flex="en"] {
+      display: flex !important;
+    }
+
+    html[lang-mode="zh"] [data-lang-flex="zh"] {
+      display: flex !important;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1040px) {
+      .hero,
+      .capability-grid,
+      .skill-layout,
+      .timeline-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main {
+        min-height: auto;
+      }
+
+      .timeline-tabs {
+        position: static;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page-shell {
+        width: min(100% - 20px, var(--max-width));
+        padding-top: 16px;
+      }
+
+      .topbar {
+        border-radius: 24px;
+        padding: 14px;
+        align-items: flex-start;
+      }
+
+      .topbar,
+      .topbar-right {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero-main,
+      .highlight-card,
+      .section-card,
+      .footer-card {
+        padding: 24px 20px;
+      }
+
+      .hero .lead {
+        max-width: 100%;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .edu-card {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="topbar panel">
+      <div class="brand">
+        <div class="brand-mark">YL</div>
+        <div class="brand-copy">
+          <div class="name">Yeqing Li</div>
+          <div class="sub">
+            <span data-lang="en">Product · Strategy · E-commerce Experience</span>
+            <span data-lang="zh">产品 · 策略运营 · 电商增长体验</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <nav class="nav">
+          <a href="#home">
+            <span data-lang="en">Home</span>
+            <span data-lang="zh">首页</span>
+          </a>
+          <a href="#capabilities">
+            <span data-lang="en">Capabilities</span>
+            <span data-lang="zh">能力</span>
+          </a>
+          <a href="#experience">
+            <span data-lang="en">Experience</span>
+            <span data-lang="zh">经历</span>
+          </a>
+          <a href="#skills">
+            <span data-lang="en">Skills</span>
+            <span data-lang="zh">技能</span>
+          </a>
+          <a href="#education">
+            <span data-lang="en">Education</span>
+            <span data-lang="zh">教育</span>
+          </a>
+        </nav>
+
+        <div class="lang-switch">
+          <button class="lang-btn active" data-set-lang="en">EN</button>
+          <button class="lang-btn" data-set-lang="zh">中</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="home" class="hero reveal">
+      <div class="hero-main panel">
+        <div>
+          <div class="eyebrow">
+            <span data-lang="en">Product, strategy, and applied AI portfolio</span>
+            <span data-lang="zh">产品、策略与 AI 应用作品页</span>
+          </div>
+
+          <h1>
+            <span data-lang="en">Building practical AI-enabled product solutions with business impact.</span>
+            <span data-lang="zh">用 AI 驱动可落地的产品方案，并真正转化为业务价值。</span>
+          </h1>
+
+          <p class="lead" data-lang-block="en">
+            I focus on turning ambiguous operational and user-experience problems into structured product capabilities. My experience spans AI workflows, merchant tooling, governance strategy, content quality, and growth optimization across TikTok E-commerce and Baidu.
+          </p>
+          <p class="lead" data-lang-block="zh">
+            我擅长把模糊的业务问题、经营问题和体验问题，转化为可复制的产品能力。过往经历覆盖 TikTok 电商与百度，聚焦 AI workflow、商家工具、治理策略、内容质量与增长优化。
+          </p>
+
+          <div class="hero-tags">
+            <div class="hero-tag">
+              <span data-lang="en">AI Workflow Design</span>
+              <span data-lang="zh">AI Workflow 设计</span>
+            </div>
+            <div class="hero-tag">
+              <span data-lang="en">Product Strategy</span>
+              <span data-lang="zh">产品策略</span>
+            </div>
+            <div class="hero-tag">
+              <span data-lang="en">Merchant Solutions</span>
+              <span data-lang="zh">商家解决方案</span>
+            </div>
+            <div class="hero-tag">
+              <span data-lang="en">Growth & Experience</span>
+              <span data-lang="zh">增长与体验优化</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-contact">
+          <span>Shanghai, China</span>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="highlight-card panel">
+          <h3>
+            <span data-lang="en">Core Highlights</span>
+            <span data-lang="zh">核心亮点</span>
+          </h3>
+
+          <div class="highlight-grid">
+            <div class="highlight-item">
+              <div class="title">
+                <span data-lang="en">AI-native Problem Solving</span>
+                <span data-lang="zh">AI 原生问题解决</span>
+              </div>
+              <p>
+                <span data-lang="en">Designed diagnostic tools, agent workflows, and automation paths for merchants and platform governance.</span>
+                <span data-lang="zh">围绕商家经营与平台治理，设计诊断工具、Agent 工作流与自动化能力。</span>
+              </p>
+            </div>
+
+            <div class="highlight-item">
+              <div class="title">
+                <span data-lang="en">Strong Business Translation</span>
+                <span data-lang="zh">业务到产品的转译能力</span>
+              </div>
+              <p>
+                <span data-lang="en">Able to convert pain points from operations, content, and commerce into scalable product and strategy initiatives.</span>
+                <span data-lang="zh">能将运营、内容与电商场景中的业务痛点，沉淀为可规模化的产品与策略方案。</span>
+              </p>
+            </div>
+
+            <div class="highlight-item">
+              <div class="title">
+                <span data-lang="en">Cross-functional Execution</span>
+                <span data-lang="zh">跨团队协同落地</span>
+              </div>
+              <p>
+                <span data-lang="en">Worked closely with product, recommendation, governance, algorithm, and operations teams to launch practical solutions.</span>
+                <span data-lang="zh">有与产品、推荐、治理、算法及运营团队深度协作并推动方案上线的经验。</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="capabilities" class="reveal">
+      <div class="section-card panel">
+        <div class="section-head">
+          <div>
+            <h2>
+              <span data-lang="en">What I Bring</span>
+              <span data-lang="zh">我能带来的能力</span>
+            </h2>
+          </div>
+          <p>
+            <span data-lang="en">A hybrid profile across product thinking, AI capability design, strategic operations, and business impact delivery.</span>
+            <span data-lang="zh">兼具产品思维、AI 能力设计、策略运营与业务结果导向的复合型背景。</span>
+          </p>
+        </div>
+
+        <div class="capability-grid">
+          <div class="capability-card">
+            <div class="cap-no">01</div>
+            <h3>
+              <span data-lang="en">AI Product Thinking</span>
+              <span data-lang="zh">AI 产品思维</span>
+            </h3>
+            <p>
+              <span data-lang="en">Experience in defining AI-assisted product capabilities from use case identification to workflow design, prompt iteration, and adoption growth.</span>
+              <span data-lang="zh">具备从场景识别、流程设计、Prompt 调优到产品渗透提升的 AI 产品能力建设经验。</span>
+            </p>
+          </div>
+
+          <div class="capability-card">
+            <div class="cap-no">02</div>
+            <h3>
+              <span data-lang="en">Strategy to Execution</span>
+              <span data-lang="zh">策略到落地</span>
+            </h3>
+            <p>
+              <span data-lang="en">Comfortable working from high-level goals down to rule design, stakeholder coordination, merchant education, and launch optimization.</span>
+              <span data-lang="zh">可以从上层目标拆解到规则设计、协同推进、商家教育与上线优化，完成闭环落地。</span>
+            </p>
+          </div>
+
+          <div class="capability-card">
+            <div class="cap-no">03</div>
+            <h3>
+              <span data-lang="en">Data-informed Decisions</span>
+              <span data-lang="zh">数据驱动决策</span>
+            </h3>
+            <p>
+              <span data-lang="en">Skilled in using metrics, funnel analysis, dashboards, and performance signals to identify issues and evaluate impact.</span>
+              <span data-lang="zh">善于结合指标、漏斗分析、数据看板与业务信号识别问题，并衡量策略效果。</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="reveal">
+      <div class="section-card panel">
+        <div class="section-head">
+          <div>
+            <h2>
+              <span data-lang="en">Experience Journey</span>
+              <span data-lang="zh">实习与项目经历</span>
+            </h2>
+          </div>
+          <p>
+            <span data-lang="en">Experience across TikTok, Baidu, Jaguar Land Rover, and Qiniu Cloud, spanning merchant tools, AI workflows, content quality, growth, and business strategy.</span>
+            <span data-lang="zh">经历覆盖 TikTok、百度、捷豹路虎与七牛云，涉及商家工具、AI workflow、内容质量、增长优化与业务策略等方向。</span>
+          </p>
+        </div>
+
+        <div class="timeline-wrap">
+          <div class="timeline-tabs">
+            <button class="timeline-tab active" data-target="exp-tt-us">
+              <div class="role">
+                <span data-lang="en">TikTok · Special Strategy Ops</span>
+                <span data-lang="zh">TikTok · 专项策略运营</span>
+              </div>
+              <div class="meta">
+                <span data-lang="en">US E-commerce Operations Center</span>
+                <span data-lang="zh">国际电商｜美国运营中心</span>
+              </div>
+            </button>
+
+            <button class="timeline-tab" data-target="exp-tt-content">
+              <div class="role">
+                <span data-lang="en">TikTok · Creator & Content Ops</span>
+                <span data-lang="zh">TikTok · 达人与内容体验运营</span>
+              </div>
+              <div class="meta">
+                <span data-lang="en">International E-commerce</span>
+                <span data-lang="zh">国际电商</span>
+              </div>
+            </button>
+
+            <button class="timeline-tab" data-target="exp-agent">
+              <div class="role">
+                <span data-lang="en">Smart Listing Optimizer</span>
+                <span data-lang="zh">商品信息优化Agent</span>
+              </div>
+              <div class="meta">
+                <span data-lang="en">Agent project · merchant-facing AI</span>
+                <span data-lang="zh">Agent 项目 · 商家侧 AI 应用</span>
+              </div>
+            </button>
+
+            <button class="timeline-tab" data-target="exp-baidu">
+              <div class="role">
+                <span data-lang="en">Baidu · Product Operations</span>
+                <span data-lang="zh">百度 · 产品运营</span>
+              </div>
+              <div class="meta">
+                <span data-lang="en">AI consultation & commerce funnel</span>
+                <span data-lang="zh">AI 咨询与电商转化链路</span>
+              </div>
+            </button>
+
+            <button class="timeline-tab" data-target="exp-more">
+              <div class="role">
+                <span data-lang="en">More Experience</span>
+                <span data-lang="zh">其他经历</span>
+              </div>
+              <div class="meta">
+                <span data-lang="en">JLR & Qiniu Cloud</span>
+                <span data-lang="zh">捷豹路虎 & 七牛云</span>
+              </div>
+            </button>
+          </div>
+
+          <div>
+            <div class="timeline-card active" id="exp-tt-us">
+              <h3>
+                <span data-lang="en">TikTok (ByteDance) · Special Strategy Operations</span>
+                <span data-lang="zh">TikTok（字节跳动）· 专项策略运营</span>
+              </h3>
+              <div class="card-meta">
+                <span data-lang="en">International E-commerce · US Operations Center</span>
+                <span data-lang="zh">国际电商 · 美国运营中心</span>
+              </div>
+
+              <div class="impact-list">
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">Built a 0-to-1 intelligent diagnostic tool for merchants to identify product risk, review attribution, and policy-related conversion blockers across 17 governance domains and 1,000+ knowledge points.</span>
+                    <span data-lang="zh">从 0 到 1 搭建商家智能诊断工具，帮助识别商品风险、差评归因与政策理解导致的转化阻塞，沉淀 17 个治理域、1000+ 知识点。</span>
+                  </p>
+                </div>
+
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">Pushed the launch of a product information optimization agent, enabling automated listing management and stronger PV growth for participating merchants.</span>
+                    <span data-lang="zh">推动商品信息优化 Agent 上线，帮助商家实现自动化商品信息托管，参与商家获得更优曝光增长。</span>
+                  </p>
+                </div>
+
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">Led category experience optimization by identifying missing attributes and improving both merchant-side completion and consumer-side product page clarity.</span>
+                    <span data-lang="zh">围绕高风险类目体验优化，识别关键缺失属性，联动优化商家填写链路与消费者端商品信息呈现。</span>
+                  </p>
+                </div>
+
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">Designed AI-enabled campaign support and automated governance safeguards covering major promotional events, key products, and platform-level GMV protection.</span>
+                    <span data-lang="zh">搭建 AI 驱动的大促支持能力与自动化治理保障机制，覆盖重点活动、重点商品与平台级 GMV 保障场景。</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-card" id="exp-tt-content">
+              <h3>
+                <span data-lang="en">TikTok (ByteDance) · Creator & Content Experience Operations</span>
+                <span data-lang="zh">TikTok（字节跳动）· 达人与内容体验运营</span>
+              </h3>
+              <div class="card-meta">
+                <span data-lang="en">International E-commerce</span>
+                <span data-lang="zh">国际电商</span>
+              </div>
+
+              <div class="impact-list">
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">Designed and iterated alliance and channel-account strategies to improve platform NPS, user experience, and merchant-side operational clarity.</span>
+                    <span data-lang="zh">设计并迭代联盟与渠道号策略，改善平台 NPS、用户体验及商家侧的策略理解和执行效率。</span>
+                  </p>
+                </div>
+
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">Improved AIGC content quality management by identifying risky category-scenario combinations and refining internal generation workflows with pre-check controls.</span>
+                    <span data-lang="zh">通过拆解高风险类目与场景组合，优化内部 AIGC 生成链路与 pre-check 机制，提升内容质量治理效果。</span>
+                  </p>
+                </div>
+
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">Built an LLM-powered workflow for content violation review, using bad-case analysis and prompt iteration to improve judgment quality and remediation guidance.</span>
+                    <span data-lang="zh">基于违规 badcase 分析与多轮 Prompt 调优，搭建 LLM 内容违规研判 workflow，提升研判效率与整改指引清晰度。</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-card" id="exp-agent">
+              <h3>
+                <span data-lang="en">Smart Listing Optimizer · Merchant-facing AI Agent</span>
+                <span data-lang="zh">商品信息优化Agent · 商家侧 AI Agent 项目</span>
+              </h3>
+              <div class="card-meta">
+                <span data-lang="en">AI-driven listing optimization for sellers</span>
+                <span data-lang="zh">面向商家的 AI 驱动商品信息优化项目</span>
+              </div>
+
+              <div class="impact-list">
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">Designed a merchant-facing AI agent for automated listing optimization, helping sellers continuously improve product information with a more lightweight operational workflow.</span>
+                    <span data-lang="zh">参与设计面向商家的商品信息优化 Agent，帮助商家以更轻量的运营方式持续优化商品信息。</span>
+                  </p>
+                </div>
+
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">The workflow covered title refinement, search term optimization, image enhancement, selling-point generation, multi-angle visuals, and model image generation.</span>
+                    <span data-lang="zh">能力覆盖标题优化、搜索词优化、图片质量提升、卖点图生成、多角度图生成与模特图生成。</span>
+                  </p>
+                </div>
+
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">Structured the product around always-on optimization, full-store management logic, and compliance-aware safeguards so that improvements could happen at scale.</span>
+                    <span data-lang="zh">项目围绕 24/7 持续优化、全店托管逻辑与合规保障机制展开，使优化能力能够规模化运行。</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-card" id="exp-baidu">
+              <h3>
+                <span data-lang="en">Baidu · Product Operations</span>
+                <span data-lang="zh">百度 · 产品运营</span>
+              </h3>
+              <div class="card-meta">
+                <span data-lang="en">E-commerce analytics, AI consultation, and conversion optimization</span>
+                <span data-lang="zh">电商数据分析、AI 咨询能力与转化链路优化</span>
+              </div>
+
+              <div class="impact-list">
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">Built business dashboards independently using SQL and supported assortment strategy, campaign retrospectives, and service-efficiency optimization through funnel analysis.</span>
+                    <span data-lang="zh">独立使用 SQL 搭建业务数据看板，围绕漏斗转化拆解问题，支持选品策略、大促复盘和咨询效率优化。</span>
+                  </p>
+                </div>
+
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">Launched an AI consultation capability that helped handle peak inquiry volume and improved the user path from consultation to payment.</span>
+                    <span data-lang="zh">推动 AI 咨询能力上线，承接高峰期咨询需求，优化用户从咨询到支付下单的转化路径。</span>
+                  </p>
+                </div>
+
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">Participated in major campaign operations through demand-based assortment and bundle design, contributing to large-scale GMV growth.</span>
+                    <span data-lang="zh">参与重点大促项目，通过需求导向选品与商品组合设计，支持活动 GMV 增长。</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-card" id="exp-more">
+              <h3>
+                <span data-lang="en">Additional Experience</span>
+                <span data-lang="zh">其他经历</span>
+              </h3>
+              <div class="card-meta">
+                <span data-lang="en">Jaguar Land Rover · Brand Marketing | Qiniu Cloud · Merchant Operations</span>
+                <span data-lang="zh">捷豹路虎 · 品牌营销 ｜ 七牛云 · 商家运营</span>
+              </div>
+
+              <div class="impact-list">
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">At Jaguar Land Rover, supported integrated marketing, channel monitoring, and campaign performance analysis across TikTok, YouTube, Douyin, and Xiaohongshu.</span>
+                    <span data-lang="zh">在捷豹路虎，参与整合营销、渠道投放监控和跨平台内容效果分析，覆盖 TikTok、YouTube、抖音、小红书等渠道。</span>
+                  </p>
+                </div>
+
+                <div class="impact-item">
+                  <div class="impact-dot"></div>
+                  <p>
+                    <span data-lang="en">At Qiniu Cloud, helped build a new CDN agency collaboration model, supplier tiering strategy, and pricing-based inventory planning approach.</span>
+                    <span data-lang="zh">在七牛云，参与搭建 CDN 代理合作模式、供应商分级策略及基于价格预测的资源备货方案。</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="reveal">
+      <div class="section-card panel">
+        <div class="section-head">
+          <div>
+            <h2>
+              <span data-lang="en">Interactive Skill Map</span>
+              <span data-lang="zh">交互式技能地图</span>
+            </h2>
+          </div>
+          <p>
+            <span data-lang="en">A quick view of the strengths I would bring into AI product, product consulting, and strategic operations roles.</span>
+            <span data-lang="zh">快速查看我在 AI 产品、产品咨询与策略运营岗位上的核心能力组合。</span>
+          </p>
+        </div>
+
+        <div class="skill-layout">
+          <div class="skill-cloud">
+            <button class="skill-pill active" data-skill="ai">
+              <span data-lang="en">AI Product Ops</span>
+              <span data-lang="zh">AI 产品运营</span>
+            </button>
+            <button class="skill-pill" data-skill="workflow">
+              <span data-lang="en">Workflow Design</span>
+              <span data-lang="zh">Workflow 设计</span>
+            </button>
+            <button class="skill-pill" data-skill="merchant">
+              <span data-lang="en">Merchant Solutions</span>
+              <span data-lang="zh">商家解决方案</span>
+            </button>
+            <button class="skill-pill" data-skill="strategy">
+              <span data-lang="en">Strategy & GTM</span>
+              <span data-lang="zh">策略与 GTM</span>
+            </button>
+            <button class="skill-pill" data-skill="data">
+              <span data-lang="en">Data Analysis</span>
+              <span data-lang="zh">数据分析</span>
+            </button>
+            <button class="skill-pill" data-skill="content">
+              <span data-lang="en">Content & Governance</span>
+              <span data-lang="zh">内容与治理</span>
+            </button>
+            <button class="skill-pill" data-skill="growth">
+              <span data-lang="en">Growth Optimization</span>
+              <span data-lang="zh">增长优化</span>
+            </button>
+            <button class="skill-pill" data-skill="collab">
+              <span data-lang="en">Cross-functional Collaboration</span>
+              <span data-lang="zh">跨团队协作</span>
+            </button>
+          </div>
+
+          <div class="skill-detail" id="skillDetail">
+            <div class="mini-label">
+              <span data-lang="en">CURRENT FOCUS</span>
+              <span data-lang="zh">当前聚焦</span>
+            </div>
+            <h3 id="skillTitle">AI Product Ops</h3>
+            <p id="skillBody">
+              Experience in identifying operational pain points that can be transformed into AI-assisted tools or workflows, especially in merchant diagnostics, content review, automation, and productized support mechanisms.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="reveal">
+      <div class="section-card panel">
+        <div class="section-head">
+          <div>
+            <h2>
+              <span data-lang="en">Education & Recognition</span>
+              <span data-lang="zh">教育背景与荣誉</span>
+            </h2>
+          </div>
+          <p>
+            <span data-lang="en">Academic background in statistics with strong analytical training, plus scholarship and competition achievements.</span>
+            <span data-lang="zh">统计学背景带来扎实的数据分析训练，同时具备奖学金与竞赛成果。</span>
+          </p>
+        </div>
+
+        <div class="edu-grid">
+          <div class="edu-card">
+            <div>
+              <h3>
+                <span data-lang="en">Shanghai Normal University</span>
+                <span data-lang="zh">上海师范大学</span>
+              </h3>
+              <p>
+                <span data-lang="en">Master's Candidate in Applied Statistics · First-Class Graduate Scholarship</span>
+                <span data-lang="zh">应用统计学硕士在读 · 研究生一等奖学金</span>
+              </p>
+            </div>
+            <div class="edu-date">2025 – 2027</div>
+          </div>
+
+          <div class="edu-card">
+            <div>
+              <h3>
+                <span data-lang="en">Shanghai Lixin University of Accounting and Finance</span>
+                <span data-lang="zh">上海立信会计金融学院</span>
+              </h3>
+              <p>
+                <span data-lang="en">B.A. in Economic Statistics · GPA 3.8/4.0 · Ranked 1st in Major · National Scholarship</span>
+                <span data-lang="zh">经济统计学本科 · GPA 3.8/4.0 · 专业第一 · 国家奖学金</span>
+              </p>
+            </div>
+            <div class="edu-date">2021 – 2025</div>
+          </div>
+
+          <div class="edu-card">
+            <div>
+              <h3>
+                <span data-lang="en">East China University of Political Science and Law</span>
+                <span data-lang="zh">华东政法大学</span>
+              </h3>
+              <p>
+                <span data-lang="en">Minor in International Commercial Law</span>
+                <span data-lang="zh">国际商法方向辅修双学位</span>
+              </p>
+            </div>
+            <div class="edu-date">2021 – 2025</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="footer-card panel">
+        <div>
+          <h3>
+            <span data-lang="en">Open to product, strategy, and business-facing roles</span>
+            <span data-lang="zh">关注产品、策略与业务导向岗位机会</span>
+          </h3>
+          <p>
+            <span data-lang="en">This page is designed to help recruiters quickly understand my experience, working style, and the kinds of problems I enjoy solving across product, strategy, operations, and applied AI.</span>
+            <span data-lang="zh">这个页面希望帮助招聘方快速了解我的经历、做事方式，以及我在产品、策略、运营与 AI 应用方向上更擅长解决的问题。</span>
+          </p>
+        </div>
+        <div class="footer-action">
+          <a href="https://bytedance.larkoffice.com/wiki/HOLbwLmMoiKqzQkKtB6cNnOfnCe" target="_blank" rel="noopener noreferrer">
+            <span data-lang="en">简介-李叶青</span>
+            <span data-lang="zh">简介-李叶青</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const html = document.documentElement;
+    const langButtons = document.querySelectorAll('.lang-btn');
+    let currentLang = 'en';
+
+    function setLang(lang) {
+      currentLang = lang;
+      html.setAttribute('lang-mode', lang);
+      langButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.setLang === lang);
+      });
+      renderSkillDetail(activeSkill);
+    }
+
+    langButtons.forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.dataset.setLang));
+    });
+
+    const tabs = document.querySelectorAll('.timeline-tab');
+    const cards = document.querySelectorAll('.timeline-card');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.target;
+        tabs.forEach(item => item.classList.remove('active'));
+        cards.forEach(card => card.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+
+    const skillCopy = {
+      ai: {
+        en: {
+          title: 'AI Product Ops',
+          body: 'Experience in identifying operational pain points that can be transformed into AI-assisted tools or workflows, especially in merchant diagnostics, content review, automation, and productized support mechanisms.'
+        },
+        zh: {
+          title: 'AI 产品运营',
+          body: '擅长识别可被 AI 改造的业务痛点，并将其转化为工具化、流程化能力，重点覆盖商家诊断、内容审核、自动化支持等场景。'
+        }
+      },
+      workflow: {
+        en: {
+          title: 'Workflow Design',
+          body: 'Able to map unclear judgment-heavy processes into clearer AI workflows by defining inputs, outputs, review logic, exception handling, and adoption paths.'
+        },
+        zh: {
+          title: 'Workflow 设计',
+          body: '能够将复杂且依赖经验判断的流程拆解为更清晰的 AI workflow，明确输入输出、研判逻辑、异常处理与应用路径。'
+        }
+      },
+      merchant: {
+        en: {
+          title: 'Merchant Solutions',
+          body: 'Worked on merchant-facing problems including diagnostic tooling, product information optimization, governance understanding, and campaign support systems.'
+        },
+        zh: {
+          title: '商家解决方案',
+          body: '长期围绕商家场景工作，覆盖经营诊断、商品信息优化、治理认知、大促支持等商家侧解决方案设计。'
+        }
+      },
+      strategy: {
+        en: {
+          title: 'Strategy & GTM',
+          body: 'Comfortable with designing strategy mechanisms, policy rules, rollout logic, and education plans that help new capabilities land smoothly in real business contexts.'
+        },
+        zh: {
+          title: '策略与 GTM',
+          body: '具备策略机制设计、规则制定、上线节奏规划与商家教育能力，帮助新能力在真实业务环境中顺利落地。'
+        }
+      },
+      data: {
+        en: {
+          title: 'Data Analysis',
+          body: 'Strong statistical background with hands-on dashboard building, SQL analysis, funnel diagnosis, and data-backed impact evaluation.'
+        },
+        zh: {
+          title: '数据分析',
+          body: '具备扎实统计学背景与实操经验，可独立完成 SQL 分析、看板搭建、漏斗诊断与策略效果评估。'
+        }
+      },
+      content: {
+        en: {
+          title: 'Content & Governance',
+          body: 'Experience in platform content quality, AIGC risk control, governance logic, and quality-improvement workflows involving multiple internal partners.'
+        },
+        zh: {
+          title: '内容与治理',
+          body: '熟悉平台内容质量、AIGC 风险治理、规则逻辑与跨团队治理协同流程，能推动质量提升机制落地。'
+        }
+      },
+      growth: {
+        en: {
+          title: 'Growth Optimization',
+          body: 'Focused on improving user experience and commercial outcomes through conversion analysis, category optimization, automation, and operational leverage.'
+        },
+        zh: {
+          title: '增长优化',
+          body: '关注通过转化分析、类目优化、自动化能力与运营杠杆，持续改善用户体验与商业结果。'
+        }
+      },
+      collab: {
+        en: {
+          title: 'Cross-functional Collaboration',
+          body: 'Used to working closely with product, algorithm, governance, recommendation, and operations teams to move from ideas to launched solutions.'
+        },
+        zh: {
+          title: '跨团队协作',
+          body: '具备与产品、算法、治理、推荐、运营等多团队协同推进项目的经验，能推动方案从想法走向上线。'
+        }
+      }
+    };
+
+    const skillButtons = document.querySelectorAll('.skill-pill');
+    const skillTitle = document.getElementById('skillTitle');
+    const skillBody = document.getElementById('skillBody');
+    let activeSkill = 'ai';
+
+    function renderSkillDetail(key) {
+      skillTitle.textContent = skillCopy[key][currentLang].title;
+      skillBody.textContent = skillCopy[key][currentLang].body;
+    }
+
+    skillButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        activeSkill = button.dataset.skill;
+        skillButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        renderSkillDetail(activeSkill);
+      });
+    });
+
+    renderSkillDetail(activeSkill);
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.16 });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    const navLinks = document.querySelectorAll('.nav a');
+    const sections = [...document.querySelectorAll('section[id]')];
+
+    function updateActiveNav() {
+      let current = sections[0]?.id || '';
+      const trigger = window.scrollY + 180;
+      sections.forEach(section => {
+        if (section.offsetTop <= trigger) current = section.id;
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+      });
+    }
+
+    updateActiveNav();
+    window.addEventListener('scroll', updateActiveNav);
+  </script>
+</body>
+</html>
